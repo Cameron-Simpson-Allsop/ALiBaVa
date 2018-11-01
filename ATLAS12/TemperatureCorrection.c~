@@ -1,0 +1,107 @@
+#include "TGraphErrors.h"
+#include "TCanvas.h"
+#include "TF1.h"
+#include "TAxis.h"
+#include "TString.h"
+#include "iostream"
+#include "fstream"
+#include "rootlogonATLAS.h"
+
+void Scale(TString filePath, std::vector<double> Temperature, TString rad){
+  ifstream inFile;
+  ofstream outFile;
+  inFile.open(filePath);
+  outFile.open(rad+".txt");
+
+  int i = 0;
+  while(!inFile.eof())//Reads in file row by row, and adds variables to vectors on each loop
+    {
+      double Voltage, ADC_Counts, eVoltage, eADC_Counts;
+      inFile >> Voltage >> ADC_Counts >> eVoltage >> eADC_Counts; //sets each column in row to defined variable
+      double correction = 110.4/((-0.383*(Temperature[i]))+101); //check this
+      double ADC_Ke = 22.5/110.; //crude estimate of 1 ADC count in Ke (22.5ke/ADC plateau at -25C of an unirradiated sensor))
+      double ecorrection = abs((110.4*0.05)/(-0.383*pow(-0.383*(Temperature[i])+101,2))); 
+
+      //std::cout << Voltage << " " << ADC_Counts << " " << eVoltage << " " << eADC_Counts << std::endl;
+      //std::cout << Voltage << " " << ADC_Counts*correction*ADC_Ke << " " << eVoltage << " " << pow(pow(ADC_Counts*ADC_Ke*ecorrection,2)+pow(correction*ADC_Ke*eADC_Counts,2),0.5) << std::endl;
+      i = i+1;
+
+      outFile << Voltage/1000. << "\t" << ADC_Counts*correction*ADC_Ke << "\t" << eVoltage << "\t" << pow(pow(ADC_Counts*ADC_Ke*ecorrection,2)+pow(correction*ADC_Ke*eADC_Counts,2),0.5) << std::endl;
+      
+    }
+
+  inFile.close();
+  outFile.close(); 
+ 
+  }
+void TemperatureCorrection(){
+  rootlogonATLAS();
+  
+  Scale("25Oct2018_ATLAS17mini_GammaIrrad_10Mrad_PreAnneal_Cold/RSRun25Oct18ATLAS17GammaPreAnneal10Mrad_1/CCE_output_PF.txt",{-23.9,-24.2,-24.5,-24.8,-25.1,-25.5,-25.7,-25.9,-26.1,-26.3,-26.3},"10Mrad");
+  Scale("29Oct2018_ATLAS17mini_GammaIrrad_17p5Mrad_PreAnneal_Cold/RSRun29Oct18ATLAS17GammaPreAnneal17p5Mrad_1/CCE_output_PF.txt",{-22.6,-23.4,-24.0,-24.4,-24.6,-24.8,-25.0,-25.1,-25.3,-25.7},"17p5Mrad");
+
+
+  TGraphErrors *PreMrad10 = new TGraphErrors("10Mrad.txt");
+  PreMrad10->SetMarkerColor(kBlack);
+  PreMrad10->SetLineColor(kBlack);
+  TGraphErrors *PreMrad17p5 = new TGraphErrors("17p5Mrad.txt");
+  PreMrad17p5->SetMarkerColor(kBlue);
+  PreMrad17p5->SetLineColor(kBlue);
+  TMultiGraph *Combined_CCE = new TMultiGraph();
+  Combined_CCE->GetXaxis()->SetTitle("Bias Voltage [kV]");
+  Combined_CCE->GetYaxis()->SetTitle("Collected Charge [ke]");
+  Combined_CCE->GetYaxis()->SetTitleOffset(1.35);
+  Combined_CCE->Add(PreMrad10,"p");
+  Combined_CCE->Add(PreMrad17p5,"p");
+
+  TGraphErrors *PreMrad10ADC = new TGraphErrors("25Oct2018_ATLAS17mini_GammaIrrad_10Mrad_PreAnneal_Cold/RSRun25Oct18ATLAS17GammaPreAnneal10Mrad_1/CCE_output_PF.txt");
+  PreMrad10ADC->SetMarkerColor(kBlack);
+  PreMrad10ADC->SetLineColor(kBlack);
+  TGraphErrors *PreMrad17p5ADC = new TGraphErrors("29Oct2018_ATLAS17mini_GammaIrrad_17p5Mrad_PreAnneal_Cold/RSRun29Oct18ATLAS17GammaPreAnneal17p5Mrad_1/CCE_output_PF.txt");
+  PreMrad17p5ADC->SetMarkerColor(kBlue);
+  PreMrad17p5ADC->SetLineColor(kBlue);
+  TMultiGraph *Combined_CCE_ADC = new TMultiGraph();
+  Combined_CCE_ADC->GetXaxis()->SetTitle("Bias Voltage [V]");
+  Combined_CCE_ADC->GetYaxis()->SetTitle("Collected Charge [ADC]");
+  Combined_CCE_ADC->GetYaxis()->SetTitleOffset(1.5);
+  Combined_CCE_ADC->Add(PreMrad10ADC,"p");
+  Combined_CCE_ADC->Add(PreMrad17p5ADC,"p");
+  
+  TLegend *leg;
+  leg = new TLegend(0.5,0.2,0.7,0.3);
+  leg->SetBorderSize(0);
+  leg->SetFillColor(0);
+  leg->SetTextSize(0.035);
+  leg->SetFillStyle(1000);
+  leg->SetTextFont(42);
+  leg->SetNColumns(1);
+  leg->AddEntry(PreMrad10,"Pre-Annealing 10Mrad","lp");
+  leg->AddEntry(PreMrad17p5,"Pre-Annealing 17.5Mrad","lp");
+
+  TLegend *legADC;
+  legADC = new TLegend(0.6,0.2,0.8,0.3);
+  legADC->SetBorderSize(0);
+  legADC->SetFillColor(0);
+  legADC->SetTextSize(0.035);
+  legADC->SetFillStyle(1000);
+  legADC->SetTextFont(42);
+  legADC->SetNColumns(1);
+  legADC->AddEntry(PreMrad10ADC,"10Mrad","lp");
+  legADC->AddEntry(PreMrad17p5ADC,"17.5Mrad","lp");
+
+  TGaxis::SetMaxDigits(2);
+  
+  TCanvas *CCE = new TCanvas("CCE","CCE",600,600);
+  Combined_CCE->Draw("AP");
+  leg->Draw("same");
+  CCE->SaveAs("Combined_CCE_Plot_ke.pdf");
+
+  TCanvas *CCEADC = new TCanvas("CCE_ADC","CCE_ADC",600,600);
+  CCEADC->SetRightMargin(2);
+  Combined_CCE_ADC->Draw("AP");
+  legADC->Draw("same");
+  //CCEADC->SaveAs("Combined_CCE_Plot_ADC.pdf");
+ 
+}
+
+//Principle is to convert ADC counts at temperature T to ADC counts at -25C for an unirradiated sensor (at plateu), which is what Patrick's equation (correction double) does. And then use the fact that at -25C unirradiated, ~110 ADC = ~22500 electrons.

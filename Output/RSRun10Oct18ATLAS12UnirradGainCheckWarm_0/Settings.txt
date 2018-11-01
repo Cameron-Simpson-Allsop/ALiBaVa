@@ -1,0 +1,11 @@
+Path To File List:/home/csa/Documents/ALiBaVa/10Oct2018_ATLAS12_Unirradiated_ChipGainCheck/warm
+Path To Analysis Directory:/home/csa/Documents/ALiBaVa/Output/
+Sensor Name:RSRun10Oct18ATLAS12UnirradGainCheckWarm
+status Entry:0
+Seed Cut:3.5
+Neighbour Cut:1.8
+Minimum Cluster Size:4
+Lower Time Cut:5
+Upper Time Cut:15
+Temperature:22.3,22.5,22.6,22.8,22.8
+Sensor Type:0

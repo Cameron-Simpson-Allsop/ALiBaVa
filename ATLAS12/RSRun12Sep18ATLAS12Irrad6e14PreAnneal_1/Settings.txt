@@ -1,0 +1,11 @@
+Path To File List:/home/aliuser/Documents/Alibava_data/12Sept2018_ATLAS12_Irradiated_Cold
+Path To Analysis Directory:/home/aliuser/Documents/Alibava_data/Output/
+Sensor Name:RSRun12Sep18ATLAS12Irrad6e14PreAnneal
+status Entry:1
+Seed Cut:3.5
+Neighbour Cut:1.8
+Minimum Cluster Size:4
+Lower Time Cut:5
+Upper Time Cut:15
+Temperature:-24.6,-25.1,-25.5,-25.7,-26.0,-26.1,-26.3,-26.5,-26.6,-26.7
+Sensor Type:0

@@ -1,0 +1,11 @@
+Path To File List:/home/aliuser/Documents/Alibava_data/10Oct2018_ATLAS12_Unirradiated_ChipGainCheck/intermediate
+Path To Analysis Directory:/home/aliuser/Documents/Alibava_data/Output/ChipGainCheck
+Sensor Name:RSRun10Oct18ATLAS12UnirradChipGainCheckIntermediateUnscaled
+status Entry:0
+Seed Cut:3.5
+Neighbour Cut:1.8
+Minimum Cluster Size:4
+Lower Time Cut:5
+Upper Time Cut:15
+Temperature:
+Sensor Type:0
