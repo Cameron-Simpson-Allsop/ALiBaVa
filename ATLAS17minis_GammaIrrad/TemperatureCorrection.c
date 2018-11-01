@@ -13,7 +13,7 @@ void Scale(TString filePath, std::vector<double> Temperature, TString rad){
   inFile.open(filePath);
   outFile.open(rad+".txt");
 
-  int i = 0;
+  int i{0};
   while(!inFile.eof())//Reads in file row by row, and adds variables to vectors on each loop
     {
       double Voltage, ADC_Counts, eVoltage, eADC_Counts;
@@ -24,10 +24,10 @@ void Scale(TString filePath, std::vector<double> Temperature, TString rad){
 
       //std::cout << Voltage << " " << ADC_Counts << " " << eVoltage << " " << eADC_Counts << std::endl;
       //std::cout << Voltage << " " << ADC_Counts*correction*ADC_Ke << " " << eVoltage << " " << pow(pow(ADC_Counts*ADC_Ke*ecorrection,2)+pow(correction*ADC_Ke*eADC_Counts,2),0.5) << std::endl;
-      i = i+1;
+   
+      outFile << Voltage/1000. << "\t" << ADC_Counts*correction*ADC_Ke << "\t" << eVoltage/1000. << "\t" << pow(pow(ADC_Counts*ADC_Ke*ecorrection,2)+pow(correction*ADC_Ke*eADC_Counts,2),0.5) << std::endl;
 
-      outFile << Voltage/1000. << "\t" << ADC_Counts*correction*ADC_Ke << "\t" << eVoltage << "\t" << pow(pow(ADC_Counts*ADC_Ke*ecorrection,2)+pow(correction*ADC_Ke*eADC_Counts,2),0.5) << std::endl;
-      
+      i++;
     }
 
   inFile.close();
