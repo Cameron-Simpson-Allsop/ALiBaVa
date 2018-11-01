@@ -37,10 +37,9 @@ void Scale(TString filePath, std::vector<double> Temperature, TString rad){
 void TemperatureCorrection(){
   rootlogonATLAS();
   
-  Scale("25Oct2018_ATLAS17mini_GammaIrrad_10Mrad_PreAnneal_Cold/RSRun25Oct18ATLAS17GammaPreAnneal10Mrad_1/CCE_output_PF.txt",{-23.9,-24.2,-24.5,-24.8,-25.1,-25.5,-25.7,-25.9,-26.1,-26.3,-26.3},"10Mrad_PreAnneal");
-  Scale("29Oct2018_ATLAS17mini_GammaIrrad_17p5Mrad_PreAnneal_Cold/RSRun29Oct18ATLAS17GammaPreAnneal17p5Mrad_1/CCE_output_PF.txt",{-22.6,-23.4,-24.0,-24.4,-24.6,-24.8,-25.0,-25.1,-25.3,-25.7,-25.7},"17p5Mrad_PreAnneal");
-  Scale("30Oct2018_ATLAS17mini_GammaIrrad_35Mrad_PreAnneal_Cold/RSRun30Oct18ATLAS17PreAnneal35Mrad_1/CCE_output_PF.txt",{-23.0,-23.3,-24.1,-24.5,-24.8,-25.0,-25.2,-25.3,-25.4,-25.4,-25.4},"35Mrad_PreAnneal");
-
+  Scale("RSRun25Oct18ATLAS17GammaPreAnneal10Mrad_1/CCE_output_PF.txt",{-23.9,-24.2,-24.5,-24.8,-25.1,-25.5,-25.7,-25.9,-26.1,-26.3,-26.3},"10Mrad_PreAnneal");
+  Scale("RSRun29Oct18ATLAS17GammaPreAnneal17p5Mrad_1/CCE_output_PF.txt",{-22.6,-23.4,-24.0,-24.4,-24.6,-24.8,-25.0,-25.1,-25.3,-25.7,-25.7},"17p5Mrad_PreAnneal");
+  Scale("RSRun30Oct18ATLAS17PreAnneal35Mrad_1/CCE_output_PF.txt",{-23.0,-23.3,-24.1,-24.5,-24.8,-25.0,-25.2,-25.3,-25.4,-25.4,-25.4},"35Mrad_PreAnneal");
 
   TGraphErrors *PreMrad10 = new TGraphErrors("10Mrad_PreAnneal.txt");
   PreMrad10->SetMarkerColor(kBlack);
