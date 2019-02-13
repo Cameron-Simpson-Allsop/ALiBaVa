@@ -121,9 +121,9 @@ mg1->Add(plot2,"cp");
 mg2->Add(plot3,"cp");
 mg2->Add(plot4,"cp");
 
-mg1->GetXaxis()->SetTitle("Voltage (-V)");
+mg1->GetXaxis()->SetTitle("Bias Voltage (V)");
 mg1->GetYaxis()->SetTitle("Current (-nA)");
-mg2->GetXaxis()->SetTitle("Voltage (-V)");
+mg2->GetXaxis()->SetTitle("Bias Voltage (V)");
 mg2->GetYaxis()->SetTitle("Current (-#muA)");
 
 mg1->GetXaxis()->SetMaxDigits(1);
@@ -134,8 +134,8 @@ legend1->AddEntry(plot1,"Non-Irradiated Warm","l");
 legend1->AddEntry(plot2,"Non-Irradiated Cold","l");
 
 TLegend *legend2 = new TLegend(0.2,0.8,0.5,0.9);
-legend2->AddEntry(plot3,"Pre-Annealing Cold","l");
-legend2->AddEntry(plot4,"Post-Annealing Cold","l");
+legend2->AddEntry(plot3,"Pre-Annealing","l");
+legend2->AddEntry(plot4,"Post-Annealing","l");
 
 
 TCanvas *canvas1 = new TCanvas("canvas1","ATLAS12 Non-Irradiated I-V Characteristics",600,700);

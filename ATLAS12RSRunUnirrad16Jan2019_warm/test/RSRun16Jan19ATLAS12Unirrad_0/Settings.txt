@@ -1,0 +1,11 @@
+Path To File List:/home/aliuser/Documents/Alibava_data/16Jan2019_ATLAS12_Unirradiated_Warm
+Path To Analysis Directory:/home/aliuser/Documents/Alibava_data/Output/ATLAS12RSRunUnirrad16Jan2019_warm/test
+Sensor Name:RSRun16Jan19ATLAS12Unirrad
+status Entry:0
+Seed Cut:3.5
+Neighbour Cut:1.8
+Minimum Cluster Size:4
+Lower Time Cut:5
+Upper Time Cut:15
+Temperature:27.5,26.6,26.7,26.9,27.1,27.4,27.6,27.6,27.7,27.9
+Sensor Type:0

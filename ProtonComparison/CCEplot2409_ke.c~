@@ -1,0 +1,61 @@
+#include "TGraphErrors.h"
+#include "TCanvas.h"
+#include "TF1.h"
+#include "TAxis.h"
+#include "TString.h"
+#include "iostream"
+#include "fstream"
+
+void CCEplot2409_ke(){
+
+	TGraphErrors *g1 = new TGraphErrors("RSRun11Sep18ATLAS12Unirrad_0.txt");
+	TGraphErrors *g2 = new TGraphErrors("RSRun12Sep18ATLAS12Irrad6e14PreAnneal_1_edit2.txt");
+	TGraphErrors *g3 = new TGraphErrors("RSRun13Sep18ATLAS12Irrad6e14PostAnneal_2_edit.txt");
+	TGraphErrors *g4 = new TGraphErrors("RSRun24Aug18ATLAS12Irrad1e15PreAnnealed_1.txt"); 
+	TGraphErrors *g5 = new TGraphErrors("RSRun19Jul18ATLAS17Irrad5e14Annealed_2.txt");
+
+		g1->SetLineColor(kBlack); 
+		g1->SetMarkerColor(kBlack);
+		
+		g2->SetLineColor(kBlue); 
+		g2->SetMarkerColor(kBlue);
+		
+		g3->SetLineColor(kRed); 
+		g3->SetMarkerColor(kRed);
+
+		g4->SetLineColor(kGreen); 
+		g4->SetMarkerColor(kGreen);
+
+		g5->SetLineColor(kMagenta); 
+		g5->SetMarkerColor(kMagenta);
+
+		g1->SetMarkerStyle(20);
+		g2->SetMarkerStyle(20);
+		g3->SetMarkerStyle(20);
+		g4->SetMarkerStyle(20);
+		g5->SetMarkerStyle(20);
+
+	TMultiGraph *mg = new TMultiGraph();
+		mg->Add(g1,"p");
+		mg->Add(g2,"p");
+		mg->Add(g3,"p");
+		mg->Add(g4,"p");
+		mg->Add(g5,"p");
+		mg->GetXaxis()->SetTitle("Bias Voltage (V)");
+		mg->GetYaxis()->SetTitle("Collected Charge (ADC)");
+
+	TLegend *legend = new TLegend(0.35,0.15,0.85,0.4); //Defines Legend
+   		legend->AddEntry(g1,"ATLAS12 Unirradiated","p");
+   		legend->AddEntry(g2,"ATLAS12 6#times10^{14} n_{eq} /cm^{2} Pre-Annealing","p");
+		legend->AddEntry(g3,"ATLAS12 6#times10^{14} n_{eq} /cm^{2} Post-Annealing","p");
+		legend->AddEntry(g4,"ATLAS12 2.5#times10^{14} n_{eq} /cm^{2} Pre-Annealing ","p");
+		legend->AddEntry(g5,"ATLAS17 5#times10^{14} n_{eq} /cm^{2} Post-Annealing","p");
+		legend->SetLineColor(kWhite);		
+
+	TCanvas* canvas = new TCanvas("CCE","CCE");
+		mg->GetXaxis()->SetRangeUser(0,1200);
+		mg->GetYaxis()->SetRangeUser(-30,120);
+		mg->Draw("ALP");
+		legend->Draw();	
+
+}

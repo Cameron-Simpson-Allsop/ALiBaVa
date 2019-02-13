@@ -6,6 +6,7 @@
 #include "iostream"
 #include "fstream"
 #include "rootlogonATLAS.h"
+#include "vector"
 
 void Scale(TString filePath, std::vector<double> Temperature, TString rad){
   ifstream inFile;

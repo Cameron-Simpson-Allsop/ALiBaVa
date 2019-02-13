@@ -1,0 +1,11 @@
+Path To File List:/home/aliuser/Documents/Alibava_data/ATLAS17minis_GammaIrrad/20Nov2018_ATLAS17mini_GammaIrrad_17p5Mrad_PostAnneal_Cold
+Path To Analysis Directory:/home/aliuser/Documents/Alibava_data/Output/ATLAS17minis_GammaIrrad/17p5Mrad_PostAnneal_Cold
+Sensor Name:RSRun20Nov18ATLAS17PostAnneal17p5Mrad
+status Entry:2
+Seed Cut:3.5
+Neighbour Cut:1.8
+Minimum Cluster Size:4
+Lower Time Cut:5
+Upper Time Cut:15
+Temperature:-21.5,-21.5,-21.5,-21.4,-21.4,-21.3,-21.3,-21.3,-21.3,-21.3
+Sensor Type:0
