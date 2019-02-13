@@ -1,0 +1,11 @@
+Path To File List:/home/aliuser/Documents/Alibava_data/ATLAS1217_27MeV_Irrad_Feb2019/Pre-Annealing/ATLAS12_p2
+Path To Analysis Directory:/home/aliuser/Documents/Alibava_data/Output/ATLAS1217_27MeV_Irrad_Feb2019/Pre_Annealing/ATLAS12_p2
+Sensor Name:RSRun8Feb18ATLAS12P2irradpreannealtest1
+status Entry:1
+Seed Cut:3.5
+Neighbour Cut:1.8
+Minimum Cluster Size:4
+Lower Time Cut:5
+Upper Time Cut:15
+Temperature:-24.9,-25.7,-26.2,-26.5,-26.8,-27.0,-27.2,-27.3,-27.5,-27.7
+Sensor Type:0

@@ -1,0 +1,5 @@
+Sensor	Fluence(neq/cm2)
+ATLAS12_P1	4.25e14
+ATLAS12_P2	7.18e14
+ATLAS17_mini3	3.54e14
+ATLAS17_mini4	8.58e14 
