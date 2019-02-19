@@ -51,13 +51,13 @@ void ATLAS12_17_27MeV_IV_manual()
   TMultiGraph *IVmg = new TMultiGraph();
   TLegend *IVleg = new TLegend(0.5,0.15,0.8,0.3);
   
-  std::vector<string> filePath{"Pre-Annealing/ATLAS12_p1_IV_PreAnneal_manual.txt","Post-Annealing/ATLAS12_p1_IV_PostAnneal_manual.txt","Pre-Annealing/ATLAS12_p2_IV_PreAnneal_manual.txt","Post-Annealing/ATLAS12_p2_IV_PostAnneal_manual.txt","Pre-Annealing/ATLAS17_mini3_IV_PreAnneal_manual.txt"};
-  std::vector<string> fluences{"4.25e14","4.25e14","7.18e14","7.18e14","3.54e14"};
+  std::vector<string> filePath{"Pre-Annealing/ATLAS12_p1_IV_PreAnneal_manual.txt","Post-Annealing/ATLAS12_p1_IV_PostAnneal_manual.txt","Pre-Annealing/ATLAS12_p2_IV_PreAnneal_manual.txt","Post-Annealing/ATLAS12_p2_IV_PostAnneal_manual.txt","Pre-Annealing/ATLAS17_mini3_IV_PreAnneal_manual.txt","Post-Annealing/ATLAS17_mini3_IV_PostAnneal_manual.txt"};
+  std::vector<string> fluences{"4.25e14","4.25e14","7.18e14","7.18e14","3.54e14","3.54e14"};
 
-  std::vector<string> filediff{"ATLAS12_p1","ATLAS12_p2"};
-  std::vector<string> fluencediff{"4.25e14","7.18e14"};
-  std::vector<TString> Tfilediff{"ATLAS12_p1","ATLAS12_p2"};
-  std::vector<TString> Tfluencediff{"4.25e14","7.18e14"};
+  std::vector<string> filediff{"ATLAS12_p1","ATLAS12_p2","ATLAS17_mini3"};
+  std::vector<string> fluencediff{"4.25e14","7.18e14","3.54e14"};
+  std::vector<TString> Tfilediff{"ATLAS12_p1","ATLAS12_p2","ATLAS17_mini3"};
+  std::vector<TString> Tfluencediff{"4.25e14","7.18e14","3.54e14"};
 
   TMultiGraph *diffmg = new TMultiGraph();
   TLegend *leg = new TLegend(0.55,0.8,0.85,0.9);

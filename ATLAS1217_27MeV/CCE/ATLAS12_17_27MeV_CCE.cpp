@@ -7,8 +7,8 @@
 void ATLAS12_17_27MeV_CCE()
 {
   rootlogonATLAS();
-  std::vector<string> DirNames{"Pre-Annealing/ATLAS12_p1_PreAnnealing/","Post-Annealing/ATLAS12_p1_PostAnnealing/","Pre-Annealing/ATLAS12_p2_PreAnnealing/","Post-Annealing/ATLAS12_p2_PostAnnealing/","Pre-Annealing/ATLAS17_mini3_PreAnnealing/"};
-  std::vector<string> fluences{"4.25e14","4.25e14","7.18e14","7.18e14","3.54e14"};
+  std::vector<string> DirNames{"Pre-Annealing/ATLAS12_p1_PreAnnealing/","Post-Annealing/ATLAS12_p1_PostAnnealing/","Pre-Annealing/ATLAS12_p2_PreAnnealing/","Post-Annealing/ATLAS12_p2_PostAnnealing/","Pre-Annealing/ATLAS17_mini3_PreAnnealing/","Post-Annealing/ATLAS17_mini3_PostAnnealing/"};
+  std::vector<string> fluences{"4.25e14","4.25e14","7.18e14","7.18e14","3.54e14","3.54e14"};
   TMultiGraph *mg = new TMultiGraph();
   TLegend *IVleg = new TLegend(0.45,0.17,0.75,0.32);
   int pre_i{1};

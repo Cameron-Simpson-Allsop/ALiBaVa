@@ -53,10 +53,10 @@ Data ReadFile(std::string filePath)
   double ecurrentMean{0};
   std::size_t CV = filePath.find("CV");
   std::size_t IV = filePath.find("IV");
-  	  std::string line{""};
-	  std::string timeStamp{""};
-	  double voltage{}, current{}, resistance{}, capacitance{};
-	  int linecount{1};
+  std::string line{""};
+  std::string timeStamp{""};
+  double voltage{}, current{}, resistance{}, capacitance{};
+  int linecount{1};
 	  
   if(!inFile.good())
 	{
