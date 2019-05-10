@@ -87,7 +87,7 @@ void CCEplot2409_ke(){
   legend->AddEntry(g5,"ATLAS17 5#times10^{14} n_{eq} /cm^{2} Post-Annealing","p");
   legend->SetLineColor(kWhite);		
 
-  TCanvas* canvas = new TCanvas("CCE","CCE");
+  TCanvas* canvas = new TCanvas("CCE","CCE",600,600);
   mg->GetYaxis()->SetRangeUser(-6,25);
   mg->Draw("ALP");
   legend->Draw();

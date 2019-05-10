@@ -1,0 +1,11 @@
+Path To File List:/home/aliuser/Alibava_data_may_2019/Raw_data/May3_2019_ATLAS12EC_W109_P3
+Path To Analysis Directory:/home/aliuser/Alibava_data_may_2019/Processed_data/May3_2019_ATLAS12EC_W109_P3
+Sensor Name:RSRun3May19ATLAS12ECW109P3unirrad
+status Entry:0
+Seed Cut:3.5
+Neighbour Cut:1.8
+Minimum Cluster Size:4
+Lower Time Cut:5
+Upper Time Cut:20
+Temperature:-26.7,-26.7,-26.6,-26.5,-26.5,-26.3,-26.3
+Sensor Type:0

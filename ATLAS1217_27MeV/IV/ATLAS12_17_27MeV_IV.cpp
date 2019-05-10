@@ -1,4 +1,4 @@
-#include <fstream>
+4#include <fstream>
 #include <iostream>
 #include <vector>
 #include <string>
@@ -12,8 +12,8 @@ void ATLAS12_17_27MeV_IV()
   TMultiGraph *IVmg = new TMultiGraph();
   TLegend *IVleg = new TLegend(0.55,0.15,0.85,0.3);
 
-  std::vector<string> filePath{"Pre-Annealing/ATLAS12_p1_IV_PreAnneal.txt","Post-Annealing/ATLAS12_p1_IV_PostAnneal.txt","Pre-Annealing/ATLAS12_p2_IV_PreAnneal.txt","Post-Annealing/ATLAS12_p2_IV_PostAnneal.txt","Pre-Annealing/ATLAS17_mini3_IV_PreAnneal.txt"};
-  std::vector<string> fluences{"4.25e14","4.25e14","7.18e14","7.18e14","3.54e14"};
+  std::vector<string> filePath{"Pre-Annealing/ATLAS12_p1_IV_PreAnneal.txt","Post-Annealing/ATLAS12_p1_IV_PostAnneal.txt","Pre-Annealing/ATLAS12_p2_IV_PreAnneal.txt","Post-Annealing/ATLAS12_p2_IV_PostAnneal.txt","Pre-Annealing/ATLAS17_mini3_IV_PreAnneal.txt","Post-Annealing/ATLAS12_p2_IV_PostAnneal_newsettling.txt"};
+  std::vector<string> fluences{"4.25e14","4.25e14","7.18e14","7.18e14","3.54e14","7.18e14"};
 
   std::vector<string> filediff{"ATLAS12_p1","ATLAS12_p2"};
   std::vector<string> fluencediff{"4.25e14","7.18e14"};
@@ -147,7 +147,14 @@ void ATLAS12_17_27MeV_IV()
 	    }
 	}
       	  
-      IVmg->Add(g,"p");
+      if(postanneal != std::string::npos)
+	{
+	  IVmg->Add(g,"lp");
+	}
+      if(preanneal != std::string::npos)
+	{
+	  //IVmg->Add(g,"p");
+	}
     }
 
   TCanvas *can = new TCanvas("ATLAS_27MeV_IV","ATLAS_27MeV_IV",600,600);  

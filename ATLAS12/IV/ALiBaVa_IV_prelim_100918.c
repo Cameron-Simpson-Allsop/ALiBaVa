@@ -134,9 +134,10 @@ legend1->AddEntry(plot1,"Non-Irradiated Warm","l");
 legend1->AddEntry(plot2,"Non-Irradiated Cold","l");
 
 TLegend *legend2 = new TLegend(0.2,0.8,0.5,0.9);
+legend2->SetBorderSize(0);
+legend2->SetFillColor(0);
 legend2->AddEntry(plot3,"Pre-Annealing","l");
 legend2->AddEntry(plot4,"Post-Annealing","l");
-
 
 TCanvas *canvas1 = new TCanvas("canvas1","ATLAS12 Non-Irradiated I-V Characteristics",600,700);
 canvas1->SetRightMargin(1);

@@ -1,0 +1,12 @@
+#include "ReadFile.hpp"
+#include <iostream>
+#include <fstream>
+
+void plot()
+{
+  Data data;
+  data=ReadFile(IV_sweep.txt);
+  
+  TGraphErrors *g_sweep = new TGraphErrors(data.voltage.size(),&(data.voltage[0]),&(data.current[0]),&(data.evoltage),&(data.ecurrent));
+
+}

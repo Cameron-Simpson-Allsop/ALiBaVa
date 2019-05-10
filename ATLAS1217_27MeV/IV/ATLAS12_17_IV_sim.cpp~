@@ -1,0 +1,40 @@
+#include <iostream>
+#include <TRandom2>
+
+struct Data
+{
+  std::vector<double> voltage;
+  std::vector<double> current;
+  std::vector<double> evoltage;
+  std::vector<double> ecurrent;
+};
+
+double current(double voltage, double phi, double ephi)
+{
+  double a = 3.99e-17; //Acm^-1
+  double ea = 0.03e-17; //Acm^-1
+  double l = 1.; //cm
+  double w = 1.; //cm
+
+  std::vector<double> a_neq;
+  std::vector<double> phi_neq;
+  int Ntrials = 10;
+
+  TRandom2 *rndm = new TRandom2();
+  for(int i{0}; i<Ntrials; ++i)
+    {
+      a_neq.push_back(rndm->Gaus(a,ea));
+      phi_neq.push_back(rndm->Gaus(phi,ephi));
+    }
+  for(int i{0}; i<a_neq.size(); ++i)
+    {
+      a_neq_av = accumulate()
+    }
+  
+  return a_neq*pow(l,2)*w*phi_neq;
+}
+
+void ATLAS12_17_IV_sim()
+{
+
+}

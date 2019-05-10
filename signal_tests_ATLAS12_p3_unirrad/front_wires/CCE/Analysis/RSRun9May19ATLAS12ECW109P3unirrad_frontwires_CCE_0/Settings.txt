@@ -1,0 +1,11 @@
+Path To File List:/home/aliuser//Alibava_data_may_2019/signal_tests_ATLAS12_p3_unirrad/front_wires/CCE
+Path To Analysis Directory:/home/aliuser/Alibava_data_may_2019/signal_tests_ATLAS12_p3_unirrad/front_wires/CCE/Analysis
+Sensor Name:RSRun9May19ATLAS12ECW109P3unirrad_frontwires_CCE
+status Entry:0
+Seed Cut:3.5
+Neighbour Cut:1.8
+Minimum Cluster Size:4
+Lower Time Cut:5
+Upper Time Cut:20
+Temperature:28.0,28.0,28.2,28.5
+Sensor Type:0

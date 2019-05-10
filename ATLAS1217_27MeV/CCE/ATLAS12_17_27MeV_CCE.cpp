@@ -7,8 +7,10 @@
 void ATLAS12_17_27MeV_CCE()
 {
   rootlogonATLAS();
-  std::vector<string> DirNames{"Pre-Annealing/ATLAS12_p1_PreAnnealing/","Post-Annealing/ATLAS12_p1_PostAnnealing/","Pre-Annealing/ATLAS12_p2_PreAnnealing/","Post-Annealing/ATLAS12_p2_PostAnnealing/","Pre-Annealing/ATLAS17_mini3_PreAnnealing/","Post-Annealing/ATLAS17_mini3_PostAnnealing/"};
-  std::vector<string> fluences{"4.25e14","4.25e14","7.18e14","7.18e14","3.54e14","3.54e14"};
+  // std::vector<string> DirNames{"Pre-Annealing/ATLAS12_p1_PreAnnealing/","Post-Annealing/ATLAS12_p1_PostAnnealing/","Pre-Annealing/ATLAS12_p2_PreAnnealing/","Post-Annealing/ATLAS12_p2_PostAnnealing/","Pre-Annealing/ATLAS17_mini3_PreAnnealing/","Post-Annealing/ATLAS17_mini3_PostAnnealing/"};
+  // std::vector<string> fluences{"4.25e14","4.25e14","7.18e14","7.18e14","3.54e14","3.54e14"};
+  std::vector<string> DirNames{"Pre-Annealing/ATLAS17_mini3_PreAnnealing/","Post-Annealing/ATLAS17_mini3_PostAnnealing/","Pre-Annealing/ATLAS12_p1_PreAnnealing/","Post-Annealing/ATLAS12_p1_PostAnnealing/","Pre-Annealing/ATLAS12_p2_PreAnnealing/","Post-Annealing/ATLAS12_p2_PostAnnealing/","Pre-Annealing/ATLAS17_mini4_PreAnnealing_run2/"};
+  std::vector<string> fluences{"3.54e14","3.54e14","4.25e14","4.25e14","7.18e14","7.18e14","8.58e14"};
   TMultiGraph *mg = new TMultiGraph();
   TLegend *IVleg = new TLegend(0.45,0.17,0.75,0.32);
   int pre_i{1};
@@ -29,13 +31,13 @@ void ATLAS12_17_27MeV_CCE()
       if(preanneal != std::string::npos && postanneal == std::string::npos)
 	{
 	  g->SetMarkerStyle(20);
-	  if(pre_i!=4)	    
+	  if(pre_i!=5)	    
 	    {
 	      g->SetMarkerColor(pre_i);
 	      g->SetLineColor(pre_i);
 	      ++pre_i;
 	    }
-	  else if(pre_i==4)
+	  else if(pre_i==5)
 	    {
 	      ++pre_i;
 	      g->SetMarkerColor(pre_i);
@@ -55,13 +57,13 @@ void ATLAS12_17_27MeV_CCE()
       if(postanneal != std::string::npos && preanneal == std::string::npos)
 	{
 	  g->SetMarkerStyle(21);
-	  if(post_i!=4)	    
+	  if(post_i!=5)	    
 	    {
 	      g->SetMarkerColor(post_i);
 	      g->SetLineColor(post_i);
 	      ++post_i;
 	    }
-	  else if(post_i==4)
+	  else if(post_i==5)
 	    {
 	      ++post_i;
 	      g->SetMarkerColor(post_i);
@@ -78,7 +80,15 @@ void ATLAS12_17_27MeV_CCE()
 	      IVleg->AddEntry(g,tmp,"lp");
 	    }
 	}
-      mg->Add(g,"p");
+      if(postanneal != std::string::npos)
+	{
+	  mg->Add(g,"p");
+	}
+      if(preanneal != std::string::npos)
+	{
+	  mg->Add(g,"p");
+	}
+
     }
 
   TCanvas *can = new TCanvas("ATLAS_27MeV_CCE","ATLAS_27MeV_CCE",600,600);  
@@ -99,5 +109,6 @@ void ATLAS12_17_27MeV_CCE()
   IVleg->SetNColumns(1);
   IVleg->Draw("same");
   can->SaveAs("ATLAS12_17_CCE_27MeV.pdf");
+  can->SaveAs("ATLAS12_17_CCE_27MeV.png");
   
 }

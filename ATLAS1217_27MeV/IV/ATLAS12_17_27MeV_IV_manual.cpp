@@ -51,13 +51,13 @@ void ATLAS12_17_27MeV_IV_manual()
   TMultiGraph *IVmg = new TMultiGraph();
   TLegend *IVleg = new TLegend(0.5,0.15,0.8,0.3);
   
-  std::vector<string> filePath{"Pre-Annealing/ATLAS12_p1_IV_PreAnneal_manual.txt","Post-Annealing/ATLAS12_p1_IV_PostAnneal_manual.txt","Pre-Annealing/ATLAS12_p2_IV_PreAnneal_manual.txt","Post-Annealing/ATLAS12_p2_IV_PostAnneal_manual.txt","Pre-Annealing/ATLAS17_mini3_IV_PreAnneal_manual.txt","Post-Annealing/ATLAS17_mini3_IV_PostAnneal_manual.txt"};
-  std::vector<string> fluences{"4.25e14","4.25e14","7.18e14","7.18e14","3.54e14","3.54e14"};
+  std::vector<string> filePath{"Pre-Annealing/ATLAS17_mini3_IV_PreAnneal_manual.txt","Post-Annealing/ATLAS17_mini3_IV_PostAnneal_manual.txt","Pre-Annealing/ATLAS12_p1_IV_PreAnneal_manual.txt","Post-Annealing/ATLAS12_p1_IV_PostAnneal_manual.txt","Pre-Annealing/ATLAS12_p2_IV_PreAnneal_manual.txt","Post-Annealing/ATLAS12_p2_IV_PostAnneal_manual.txt","Pre-Annealing/ATLAS17_mini4_IV_PreAnneal_run2_manual.txt"};
+  std::vector<string> fluences{"3.54e14","3.54e14","4.25e14","4.25e14","7.18e14","7.18e14","8.58e14"};
 
-  std::vector<string> filediff{"ATLAS12_p1","ATLAS12_p2","ATLAS17_mini3"};
-  std::vector<string> fluencediff{"4.25e14","7.18e14","3.54e14"};
-  std::vector<TString> Tfilediff{"ATLAS12_p1","ATLAS12_p2","ATLAS17_mini3"};
-  std::vector<TString> Tfluencediff{"4.25e14","7.18e14","3.54e14"};
+  std::vector<string> filediff{"ATLAS17_mini3","ATLAS12_p1","ATLAS12_p2"};
+  std::vector<string> fluencediff{"3.54e14","4.25e14","7.18e14"};
+  std::vector<TString> Tfilediff{"ATLAS17_mini3","ATLAS12_p1","ATLAS12_p2"};
+  std::vector<TString> Tfluencediff{"3.54e14","4.25e14","7.18e14"};
 
   TMultiGraph *diffmg = new TMultiGraph();
   TLegend *leg = new TLegend(0.55,0.8,0.85,0.9);
@@ -88,19 +88,19 @@ void ATLAS12_17_27MeV_IV_manual()
       leg->AddEntry(g,legEntry,"lp");      
     }
 
-  TCanvas *canvas = new TCanvas("pre-post difference", "pre-post difference",600,600);
-  canvas->SetTopMargin(0.06);
-  canvas->SetRightMargin(0.1);
-  TGaxis::SetMaxDigits(3);
-  leg->SetBorderSize(0);
-  leg->SetFillColor(0);
-  leg->SetTextSize(0.02);
-  leg->SetFillStyle(1000);
-  leg->SetTextFont(42);
-  leg->SetNColumns(1);
-  diffmg->Draw("AP");
-  leg->Draw();
-  canvas->SaveAs("Current_Change_Annealing_27MeV_manual.pdf");
+  // TCanvas *canvas = new TCanvas("pre-post difference", "pre-post difference",600,600);
+  // canvas->SetTopMargin(0.06);
+  // canvas->SetRightMargin(0.1);
+  // TGaxis::SetMaxDigits(3);
+  // leg->SetBorderSize(0);
+  // leg->SetFillColor(0);
+  // leg->SetTextSize(0.02);
+  // leg->SetFillStyle(1000);
+  // leg->SetTextFont(42);
+  // leg->SetNColumns(1);
+  // diffmg->Draw("AP");
+  // leg->Draw();
+  //canvas->SaveAs("Current_Change_Annealing_27MeV_manual.pdf");
   
   int pre_i{1};
   int post_i{1};
@@ -117,13 +117,13 @@ void ATLAS12_17_27MeV_IV_manual()
       if(preanneal != std::string::npos)
 	{
 	  g->SetMarkerStyle(20);
-	  if(pre_i!=4)	    
+	  if(pre_i!=5)	    
 	    {
 	      g->SetMarkerColor(pre_i);
 	      g->SetLineColor(pre_i);
 	      ++pre_i;
 	    }
-	  else if(pre_i==4)
+	  else if(pre_i==5)
 	    {
 	      ++pre_i;
 	      g->SetMarkerColor(pre_i);
@@ -143,13 +143,13 @@ void ATLAS12_17_27MeV_IV_manual()
       else if(postanneal != std::string::npos)
 	{
 	  g->SetMarkerStyle(21);
-	  if(post_i!=4)	    
+	  if(post_i!=5)	    
 	    {
 	      g->SetMarkerColor(post_i);
 	      g->SetLineColor(post_i);
 	      ++post_i;
 	    }
-	  else if(post_i==4)
+	  else if(post_i==5)
 	    {
 	      ++post_i;
 	      g->SetMarkerColor(post_i);
@@ -166,8 +166,15 @@ void ATLAS12_17_27MeV_IV_manual()
 	      IVleg->AddEntry(g,tmp,"lp");
 	    }
 	}
-      	  
-      IVmg->Add(g,"p");
+
+      if(postanneal !=std::string::npos)
+	{
+	  IVmg->Add(g,"p");
+	}
+      if(preanneal !=std::string::npos)
+	{
+	  IVmg->Add(g,"p");
+	}
     }
   
   TCanvas *can = new TCanvas("ATLAS_27MeV_IV","ATLAS_27MeV_IV",600,600);  
