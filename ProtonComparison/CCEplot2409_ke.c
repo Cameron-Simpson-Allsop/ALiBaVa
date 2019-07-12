@@ -76,7 +76,7 @@ void CCEplot2409_ke(){
   mg->Add(g3,"p");
   mg->Add(g4,"p");
   mg->Add(g5,"p");
-  mg->GetXaxis()->SetTitle("Bias Voltage (-V)");
+  mg->GetXaxis()->SetTitle("Bias Voltage (-kV)");
   mg->GetYaxis()->SetTitle("Collected Charge (ke)");
 
   TLegend *legend = new TLegend(0.35,0.15,0.85,0.4); //Defines Legend
